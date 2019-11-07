@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace WorkingWithPointers
 {
@@ -20,6 +21,37 @@ namespace WorkingWithPointers
 
             Console.WriteLine(xPointer);
             Console.WriteLine((long)&y);
+
+            var builder = new StringBuilder();
+            var someRef = __makeref(builder);
+            IntPtr intPointer = **(IntPtr**)&someRef;
+            Console.WriteLine("the addres at heap of first Builder is: " + intPointer);
+
+            var builder2 = new StringBuilder();
+            var someRef2 = __makeref(builder2);
+            IntPtr intPointer2 = **(IntPtr**)&someRef2;
+            Console.WriteLine("the addres at heap of first Builder TWO is: " + intPointer2);
+
+            Console.WriteLine(new string('=',20));
+            //string table
+
+            string first = "f";
+            someRef = __makeref(first);
+            var firstRef = **(IntPtr**)&someRef;
+            Console.WriteLine((long)firstRef);
+            string second = "f";
+            someRef = __makeref(second);
+            var secondRef = **(IntPtr**)&someRef;
+            Console.WriteLine((long)secondRef);
+
+            var third = Console.ReadLine();
+            //var third = String.Intern( Console.ReadLine());
+            someRef = __makeref(third);
+            var thirdRef = **(IntPtr**)&someRef;
+            Console.WriteLine((long)thirdRef);
+
+            Console.WriteLine(new string('=', 20));
+
 
             topOfStack = (long)&x;
 
