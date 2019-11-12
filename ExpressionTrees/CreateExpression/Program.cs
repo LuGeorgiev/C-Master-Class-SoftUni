@@ -36,8 +36,19 @@ namespace CreateExpression
             //Third approach
             var owner = New<Owner>.Instance();
             owner.FullName = "Mnogo qko";
-
             CompareInvokeAndExpressionCreation();
+
+            // dog => dog.SayBau(13);
+            //13
+            var typeOfDog = typeof(Dog);
+            var constantThree = Expression.Constant(13);
+            //dog
+            var parameter = Expression.Parameter(typeOfDog, "dog");
+            //dog.SayBau(13)
+            var methodInfo = typeOfDog.GetMethod(nameof(Dog.SayBau));
+            var call = Expression.Call(parameter,methodInfo, constantThree);
+            var lambdaThree = Expression.Lambda<Func<Dog, string>>(call, parameter);
+
         }
 
         private static void CompareInvokeAndExpressionCreation()
