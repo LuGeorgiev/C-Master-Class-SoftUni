@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppExpressionTest", "Web
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateExpression", "CreateExpression\CreateExpression.csproj", "{411F0BFE-8687-44A0-82FD-4550201AAFD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic", "Dynamic\Dynamic.csproj", "{57FB360F-4F51-470C-BCD1-6A619EBB42FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{411F0BFE-8687-44A0-82FD-4550201AAFD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{411F0BFE-8687-44A0-82FD-4550201AAFD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{411F0BFE-8687-44A0-82FD-4550201AAFD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57FB360F-4F51-470C-BCD1-6A619EBB42FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57FB360F-4F51-470C-BCD1-6A619EBB42FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57FB360F-4F51-470C-BCD1-6A619EBB42FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57FB360F-4F51-470C-BCD1-6A619EBB42FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

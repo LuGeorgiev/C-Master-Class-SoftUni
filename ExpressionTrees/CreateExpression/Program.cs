@@ -48,6 +48,7 @@ namespace CreateExpression
             var methodInfo = typeOfDog.GetMethod(nameof(Dog.SayBau));
             var call = Expression.Call(parameter,methodInfo, constantThree);
             var lambdaThree = Expression.Lambda<Func<Dog, string>>(call, parameter);
+            var funcThree = lambda.Compile();
 
         }
 

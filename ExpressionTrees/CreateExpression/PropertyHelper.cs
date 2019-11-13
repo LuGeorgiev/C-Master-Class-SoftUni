@@ -4,7 +4,15 @@ using System.Text;
 
 namespace CreateExpression
 {
-    class PropertyHelper
+    public class PropertyHelper
     {
+        public string Name { get; set; }
+
+        public Func<object, object> Getter { get; set; }
+
+        public static PropertyHelper[] Get<T>(T obj)
+        {
+            return null;
+        }
     }
 }
