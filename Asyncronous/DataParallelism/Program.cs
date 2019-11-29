@@ -10,12 +10,13 @@ namespace DataParallelism
 {
     class Program
     {
-        static ConcurrentDictionary<int, List<int>> dict = new ConcurrentDictionary<int, List<int>>();
+        static ConcurrentDictionary<int, List<string>> dict = new ConcurrentDictionary<int, List<string>>();
 
 
         static void Main(string[] args)
         {
-            var list = Enumerable.Range(1, 100).ToList();
+            var list = Enumerable.Range(1, 1000).ToList();
+            var partitioner = Partitioner.Create(0, 100);
             //Stopwatch w = Stopwatch.StartNew();
             foreach (var item in list)
             {
@@ -29,14 +30,21 @@ namespace DataParallelism
             // w.Reset();
             //w.Start();
 
-            Parallel.ForEach(list, (el)=> 
+            //Parallel.ForEach(list, (el)=> 
+            //{
+            Parallel.ForEach(partitioner, (startEnd) =>
             {
+                for (int i = startEnd.Item1; i < startEnd.Item2; i++)
+                {
+                    //Here we work in one portion from the wjole collection due to partitioner
+                }
+
                 var id = Thread.CurrentThread.ManagedThreadId;
                 if (!dict.ContainsKey(id))
                 {
-                    dict.TryAdd(id, new List<int>());
+                    dict.TryAdd(id, new List<string>());
                 }
-                dict[id].Add(el);
+                dict[id].Add(startEnd.Item1 + "->" + startEnd.Item2);
                 //for (int i = 0; i < 100; i++)
                 //{
                 //    var num = 5;
@@ -65,4 +73,12 @@ namespace DataParallelism
             //Console.WriteLine(w.ElapsedMilliseconds + "for parallel");
         }
     }
+
+    //public class MyPart : Partitioner<string>
+    //{
+    //    public override IList<IEnumerator<string>> GetPartitions(int partitionCount)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }
