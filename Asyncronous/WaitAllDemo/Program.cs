@@ -16,9 +16,10 @@ namespace WaitAllDemo
                 tasks.Add(Task.Run(Zdr));
             }
 
-            int index = Task.WaitAny(tasks.ToArray());
-            Console.WriteLine("First: " + index);
-            Console.WriteLine("Id: " + tasks[index].Result.ManagedThreadId);
+            //int index = Task.WaitAny(tasks.ToArray());
+            //Console.WriteLine("First: " + index);
+            //Console.WriteLine("Id: " + tasks[index].Result.ManagedThreadId);
+            Task.WaitAll();
 
             Console.ReadLine();
         }
